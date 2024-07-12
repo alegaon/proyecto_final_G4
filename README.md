@@ -23,3 +23,17 @@ Desde la consola, dentro de la carpeta del backend, ejecutar el comando
 ```bash
 python run.py
 ```
+
+# Uso de Insomnia
+
+### Importar archivo json
+
+Para cargar los request de prueba, importar en Insomnia el archivo
+
+```bash
+Insomnia_2024-07-12.json
+```
+
+![alt text](image.png)
+
+Seleccionar la opcion Importar

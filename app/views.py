@@ -14,7 +14,6 @@ def index():
 def get_especies():
     especies = []
     especies = Especies.get_especies()
-    print(especies)
     if not especies:
         return jsonify({'message': 'Species not found'}), 404
     return jsonify([especie.serializer() for especie in especies])
@@ -33,7 +32,6 @@ def get_active_especies():
 
 
 def new_especie():
-    import ipdb; ipdb.set_trace()
     data = request.json
     new_art = Especies(
         nombre_vulgar=data['nombre_vulgar'],
@@ -65,9 +63,7 @@ def update_article(id_especie):
         if campo in data:
             setattr(especie, campo, data[campo])
     # este queda automatico, cada vez que se realice un Update, se actualiza la fecha automaticamente.
-    print(f"Fecha: {especie.creado}")
     especie.actualizado = datetime.today()
-    print(f"actualizado: {especie.actualizado}")
     especie.save()
     return jsonify({'message': 'Species updated succesfully', 'data': data, 'id': id_especie})
 

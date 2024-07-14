@@ -76,4 +76,4 @@ def active_article(id_especie):
     if not especie:
         return jsonify({'message': 'Species not found'}), 404
     especie.delete()
-    return jsonify({'message': 'Species deleted successfully'})
+    return jsonify({'message': 'Species deleted successfully'}), 200

@@ -25,6 +25,7 @@ test_conn()
 create_especies()
 
 init_app(app)
+CORS(app)
 
 
 if __name__ == '__main__':

@@ -33,6 +33,7 @@ def get_active_especies():
 
 
 def new_especie():
+    import ipdb; ipdb.set_trace()
     data = request.json
     new_art = Especies(
         nombre_vulgar=data['nombre_vulgar'],

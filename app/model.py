@@ -96,6 +96,7 @@ class Especies():
     def save(self):
         db = get_db()
         cursor = db.cursor()
+        import ipdb;ipdb.set_trace()
         if self.id:  # Actualizar un especie que ya existe
             cursor.execute(
                 """
@@ -105,12 +106,13 @@ class Especies():
                     WHERE id = %s
                 """,
                 (
-                    self.nombre_vulgar, self.nombre_cientifico, self.descripcion, self.lugar, self.modalidades, self.epoca,
+                    self.nombre_vulgar, self.nombre_cientifico, self.descripcion, f'{{"{self.lugar}"}}', self.modalidades, self.epoca,
                     self.activo, self.actualizado, self.id
                 )
             )
         # De lo contrario si no tiene un id_especie especificado, significa que es una nueva
         else:  # Crear un nuevo Articulo
+            self.modalidades = f'{{{",".join(self.modalidades)}}}' if self.modalidades else None
             cursor.execute(
                 """
                     INSERT INTO especies
@@ -118,7 +120,7 @@ class Especies():
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """,
                 (
-                    self.nombre_vulgar, self.nombre_cientifico, self.descripcion, self.lugar, self.modalidades, self.epoca,
+                    self.nombre_vulgar, self.nombre_cientifico, self.descripcion, f'{{"{self.lugar}"}}', self.modalidades, self.epoca,
                     self.activo, self.creado, self.actualizado
                 )
             )

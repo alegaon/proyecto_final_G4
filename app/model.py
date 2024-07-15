@@ -105,7 +105,7 @@ class Especies():
                     WHERE id = %s
                 """,
                 (
-                    self.nombre_vulgar, self.nombre_cientifico, self.descripcion, f'{{"{self.lugar}"}}', self.modalidades, self.epoca,
+                    self.nombre_vulgar, self.nombre_cientifico, self.descripcion, self.lugar, self.modalidades, self.epoca,
                     self.activo, self.actualizado, self.id
                 )
             )
